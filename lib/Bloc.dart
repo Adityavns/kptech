@@ -12,4 +12,8 @@ class Bloc {
     if (_instance == null) _instance = new Bloc._internal();
     return _instance;
   }
+
+  void setSalutation(String salutation) {
+    entryToBeSent.salutation = salutation;
+  }
 }
