@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kptech/widget_base.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,23 +28,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: getBody(),
-      appBar: AppBar(
-        title: Text("KP Tech"),
-      ),
-    );
+    return new Scaffold(body: getBody());
   }
 
   Widget getBody() {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          widget1(),
-          widget2(),
-          widget3(),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        widget1(),
+        widget2(),
+        widget3(),
+      ],
     );
   }
 
