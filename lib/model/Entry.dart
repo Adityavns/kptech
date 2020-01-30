@@ -67,4 +67,12 @@ class Entry {
     else if (email == null || email.length == 0) return false;
     return true;
   }
+
+  bool validateString(String string) {
+    if (string == null || string.length == 0)
+      return false;
+    else
+      return true;
+  }
+
 }
