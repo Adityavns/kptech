@@ -51,7 +51,12 @@ class _Widget3State extends State<Widget3> {
   }
 
   Widget getCommunicationAddressState() {
-    return Text("");
+    return Row(
+      children: <Widget>[
+        Expanded(child: TextFormField()),
+        IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
+      ],
+    );
   }
 
   Widget getCommunicationAddressDistrict() {

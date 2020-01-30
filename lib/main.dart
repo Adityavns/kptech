@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kptech/jashu.dart';
 import 'package:kptech/repository/DataSource.dart';
 import 'package:kptech/widget_base.dart';
 
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new Text("Press me to send dummy data")),
         widget1(),
         widget2(),
-//        widget3(),
+        Widget3(),
       ],
     );
   }

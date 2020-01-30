@@ -1,4 +1,3 @@
-
 import 'package:kptech/model/Entry.dart';
 
 class Bloc {
@@ -18,13 +17,11 @@ class Bloc {
     _entryToBeSent.salutation = salutation;
   }
 
-
   String get salutation => _entryToBeSent.salutation;
 
   set salutation(String value) {
     _entryToBeSent.salutation = value;
   }
-
 
   String get fullName => _entryToBeSent.fullName;
 
@@ -192,8 +189,7 @@ class Bloc {
   }
 
   bool get communicationSameAsPermanentAddress =>
-      _entryToBeSent.
-      communicationSameAsPermanentAddress;
+      _entryToBeSent.communicationSameAsPermanentAddress;
 
   set communicationSameAsPermanentAddress(bool value) {
     _entryToBeSent.communicationSameAsPermanentAddress = value;
@@ -235,8 +231,7 @@ class Bloc {
   }
 
   String get communicationAddressPermanentConstituency =>
-      _entryToBeSent.
-      communicationAddressPermanentConstituency;
+      _entryToBeSent.communicationAddressPermanentConstituency;
 
   set communicationAddressPermanentConstituency(String value) {
     _entryToBeSent.communicationAddressPermanentConstituency = value;
@@ -284,5 +279,4 @@ class Bloc {
   set heardAboutUs(String value) {
     _entryToBeSent.heardAboutUs = value;
   }
-
 }
