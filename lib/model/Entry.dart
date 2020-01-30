@@ -55,5 +55,16 @@ class Entry {
 
   Entry();
 
-  bool validate() {}
+  bool validate() {
+    if (salutation == null || salutation.length == 0)
+      return false;
+    else if (fullName == null || fullName.length == 0)
+      return false;
+    else if (gender == null || gender.length == 0)
+      return false;
+    else if (date == null || date.length == 0)
+      return false;
+    else if (email == null || email.length == 0) return false;
+    return true;
+  }
 }

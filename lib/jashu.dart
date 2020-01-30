@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:kptech/Bloc.dart';
@@ -16,6 +17,10 @@ class _Widget3State extends State<Widget3> {
   Widget build(BuildContext context) {
     return new Column(
       children: <Widget>[
+        Text(
+          "Communication Details",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         WidgetBase(getCommunicationSameAsPermanentAddress()),
         WidgetBase(getCommunicationAddressState()),
         WidgetBase(getCommunicationAddressDistrict()),
@@ -25,7 +30,7 @@ class _Widget3State extends State<Widget3> {
         WidgetBase(getCommunicationAddressPermanentConstituency()),
         WidgetBase(getTrainingStatus()),
         WidgetBase(getPreviousExperienceSector()),
-        WidgetBase(getNoofmonthsofpreviousexperience()),
+        WidgetBase(getNoOfMonthsOfPreviousExperiences()),
         WidgetBase(getEmployed()),
         WidgetBase(getEmploymentStatus()),
         WidgetBase(getEmploymentDetails()),
@@ -53,61 +58,158 @@ class _Widget3State extends State<Widget3> {
   Widget getCommunicationAddressState() {
     return Row(
       children: <Widget>[
-        Expanded(child: TextFormField()),
+        Expanded(
+            child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: "state"))),
         IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
       ],
     );
   }
 
   Widget getCommunicationAddressDistrict() {
-    return Text("");
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: "District"))),
+        IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
+      ],
+    );
   }
 
   Widget getCommunicationAddressPINCode() {
-    return Text("");
+    return TextFormField(
+      keyboardType: TextInputType.numberWithOptions(),
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "pincode",
+      ),
+    );
   }
 
   Widget getCommunicationAddressCity() {
-    return Text("");
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: "City"))),
+        IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
+      ],
+    );
   }
 
   Widget getCommunicationAddressTehsil() {
-    return Text("");
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "Tehsil",
+      ),
+    );
   }
 
   Widget getCommunicationAddressPermanentConstituency() {
-    return Text("");
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "CommunicationAddressPermanentConstituency",
+      ),
+    );
   }
 
   Widget getTrainingStatus() {
-    return Text("");
+    return Column(
+      children: <Widget>[
+        Text("Training Status"),
+        RadioButtonGroup(
+          labels: <String>["Fresher", "Experienced"],
+          onSelected: (String selected) =>
+              setState(() {
+                _picked = selected;
+              }),
+          picked: _picked,
+        ),
+      ],
+    );
   }
 
   Widget getPreviousExperienceSector() {
-    return Text("");
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "Previous Experience List",
+      ),
+    );
   }
 
-  Widget getNoofmonthsofpreviousexperience() {
-    return Text("");
+  Widget getNoOfMonthsOfPreviousExperiences() {
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "Enter Experience between 1-500 months",
+      ),
+    );
   }
 
   Widget getEmployed() {
-    return Text("");
+    return Column(
+      children: <Widget>[
+        Text("Communication Address Is Same as Permanant Address"),
+        RadioButtonGroup(
+          labels: <String>["Yes", "No"],
+          onSelected: (String selected) =>
+              setState(() {
+                _picked = selected;
+              }),
+          picked: _picked,
+        ),
+      ],
+    );
   }
 
   Widget getEmploymentStatus() {
-    return Text("");
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Employment status"))),
+        IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
+      ],
+    );
   }
 
   Widget getEmploymentDetails() {
-    return Text("");
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "Employment Details",
+      ),
+    );
   }
 
   Widget getHeardAboutUs() {
-    return Text("");
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Employment status"))),
+        IconButton(icon: Icon(Icons.keyboard_arrow_down), onPressed: () {})
+      ],
+    );
   }
 
   Widget getCandidateID() {
-    return Text("");
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: "Enter Experience between 1-500 months",
+      ),
+    );
   }
 }
