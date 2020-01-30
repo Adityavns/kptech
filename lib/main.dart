@@ -28,9 +28,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: new Scaffold(body: getBody()),
-    );
+    return new Scaffold(body: getBody());
   }
 
   Widget getBody() {
@@ -43,9 +41,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  widget1() {}
+  Widget widget1() {
+    return new Text("");
+  }
 
-  widget2() {}
+  Widget widget2() {
+    return new Text("");
+  }
 
-  widget3() {}
+  Widget widget3() {
+    return new Text("");
+  }
 }
