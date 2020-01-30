@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kptech/repository/DataSource.dart';
 import 'package:kptech/widget_base.dart';
+
+import 'model/Entry.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,21 +32,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(body: getBody());
+    return new Scaffold(appBar: new AppBar(), body: getBody());
   }
 
   Widget getBody() {
-    return Column(
+    return ListView(
       children: <Widget>[
+        new FlatButton(
+            onPressed: () {
+              DataSource.getDataSource().sendDataToServer(new Entry());
+            },
+            child: new Text("Press me to send dummy data")),
         widget1(),
         widget2(),
-        widget3(),
+//        widget3(),
       ],
     );
   }
 
   Widget widget1() {
-    return WidgetBase(child: Text("Pranay"));
+    return WidgetBase(new Text("Pranay"));
   }
 
   Widget widget2() {
