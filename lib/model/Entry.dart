@@ -54,4 +54,6 @@ class Entry {
   String heardAboutUs;
 
   Entry();
+
+  bool validate() {}
 }
