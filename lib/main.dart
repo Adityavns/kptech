@@ -50,6 +50,28 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget widget3() {
-    return new Text("");
+    CommunicationAddress _radioValueForCommunication = CommunicationAddress.yes;
+    return new Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            RadioListTile<CommunicationAddress>(
+                value: CommunicationAddress.yes,
+                groupValue: _radioValueForCommunication,
+                onChanged: _onCheckCommunicationSameasPermanentAddress),
+            RadioListTile<CommunicationAddress>(
+                value: CommunicationAddress.no,
+                groupValue: _radioValueForCommunication,
+                onChanged: _onCheckCommunicationSameasPermanentAddress),
+          ],
+        )
+      ],
+    );
+  }
+
+  void _onCheckCommunicationSameasPermanentAddress(CommunicationAddress value) {
+    _radioValueForCommunication = value;
   }
 }
+
+enum CommunicationAddress { yes, no }
