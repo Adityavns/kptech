@@ -9,7 +9,7 @@ class Bloc {
     _entryToBeSent = new Entry();
   }
 
-  Bloc getInstance() {
+  static Bloc getInstance() {
     if (_instance == null) _instance = new Bloc.internal();
     return _instance;
   }
