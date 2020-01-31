@@ -23,7 +23,29 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   String _disability = "No";
   String _religion="Hindu";
   String _category="General";
-  List<String> _selectedList;
+  List<String> _selectedList=["Locomotor Disability"];
+  List<String> labels = [
+    "Locomotor Disability",
+    "Leprosy Cured Person",
+    "Dwarfism",
+    "Acid Attack Victims",
+    "Blindness/Visual Impairment",
+    "Low-vision (Visual Impairment)",
+    "Deaf",
+    "Hard of Hearing",
+    "Speech and Language Disability",
+    "Intellectual/Mental Retardation",
+    "Autism Spectrum Disorder",
+    "Specific Learning Disabilities",
+    "Mental Behavior-Mental Illness",
+    "Haemophilia",
+    "Thalassemia",
+    "Sickle Cell Disease",
+    "Deaf Blindness",
+    "Cerebral Palsy",
+    "Multiple Sclerosis",
+    "Muscular Dystrophy"
+  ];
 
   final _formKey = GlobalKey<FormState>();
 
@@ -118,8 +140,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
           orientation: GroupedButtonsOrientation.HORIZONTAL,
           labels: <String>["Mr", "Ms", "Mrs", "mx"],
           picked: _salutation,
-          onChange: (String label, int index) =>
-              print("label: $label index: $index"),
           onSelected: (String selected) {
             setState(() {
               _salutation = selected;
@@ -131,10 +151,11 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getTextField(
-      TextEditingController controller, int maxLength, String hintText) {
+      TextEditingController controller, int maxLength, String hintText,String inputType) {
     return TextFormField(
       controller: controller,
       maxLength: maxLength,
+      keyboardType: getType(inputType),
       decoration: InputDecoration(
         labelText: hintText,
         border: OutlineInputBorder(),
@@ -149,7 +170,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getName() {
-    return getTextField(nameController, 50, "Enter Full Name*");
+    return getTextField(nameController, 50, "Enter Full Name*","text");
   }
 
   Widget getGender() {
@@ -168,8 +189,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             "Transgender",
           ],
           picked: _gender,
-          onChange: (String label, int index) =>
-              print("label: $label index: $index"),
           onSelected: (String selected) {
             setState(() {
               _gender = selected;
@@ -204,7 +223,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getEmailId() {
-    return getTextField(emailController, 20, "Enter Email*");
+    return getEmailField(emailController, 50, "Enter Email*","email");
   }
 
   Widget getMaritalStatus() {
@@ -228,8 +247,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "Not to be Disclosed"
             ],
             picked: _martialStatus,
-            onChange: (String label, int index) =>
-                print("label: $label index: $index"),
             onSelected: (String selected) {
               _martialStatus = selected;
             }),
@@ -238,15 +255,15 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getFathersName() {
-    return getTextField(fNameController, 20, "Enter Father's Name*");
+    return getTextField(fNameController, 50, "Enter Father's Name*","text");
   }
 
   Widget getMothersName() {
-    return getTextField(mNameController, 20, "Enter Mothers's Name*");
+    return getTextField(mNameController, 50, "Enter Mothers's Name*","text");
   }
 
   Widget getGuardiansName() {
-    return getTextField(gNameController, 20, "Enter Guardian's Name*");
+    return getTextField(gNameController, 50, "Enter Guardian's Name*","text");
   }
 
   Widget getReligion() {
@@ -272,8 +289,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "Not to be Disclosed"
             ],
             picked: _religion,
-            onChange: (String label, int index) =>
-                print("label: $label index: $index"),
             onSelected: (String selected) {
               setState(() {
                 _religion = selected;
@@ -303,8 +318,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "Not to be disclosed"
             ],
             picked: _category,
-            onChange: (String label, int index) =>
-                print("label: $label index: $index"),
             onSelected: (String selected) {
               setState(() {
                 _category = selected;
@@ -329,8 +342,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "No",
             ],
             picked: _disability,
-            onChange: (String label, int index) =>
-                print("label: $label index: $index"),
             onSelected: (String selected) {
               setState(() {
                 _disability = selected;
@@ -357,50 +368,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             orientation: GroupedButtonsOrientation.VERTICAL,
             disabled: _disability == "Yes"
                 ? []
-                : [
-                    "Locomotor Disability",
-                    "Leprosy Cured Person",
-                    "Dwarfism",
-                    "Acid Attack Victims",
-                    "Blindness/Visual Impairment",
-                    "Low-vision (Visual Impairment)",
-                    "Deaf",
-                    "Hard of Hearing",
-                    "Speech and Language Disability",
-                    "Intellectual/Mental Retardation",
-                    "Autism Spectrum Disorder",
-                    "Specific Learning Disabilities",
-                    "Mental Behavior-Mental Illness",
-                    "Haemophilia",
-                    "Thalassemia",
-                    "Sickle Cell Disease",
-                    "Deaf Blindness",
-                    "Cerebral Palsy",
-                    "Multiple Sclerosis",
-                    "Muscular Dystrophy"
-                  ],
-            labels: <String>[
-              "Locomotor Disability",
-              "Leprosy Cured Person",
-              "Dwarfism",
-              "Acid Attack Victims",
-              "Blindness/Visual Impairment",
-              "Low-vision (Visual Impairment)",
-              "Deaf",
-              "Hard of Hearing",
-              "Speech and Language Disability",
-              "Intellectual/Mental Retardation",
-              "Autism Spectrum Disorder",
-              "Specific Learning Disabilities",
-              "Mental Behavior-Mental Illness",
-              "Haemophilia",
-              "Thalassemia",
-              "Sickle Cell Disease",
-              "Deaf Blindness",
-              "Cerebral Palsy",
-              "Multiple Sclerosis",
-              "Muscular Dystrophy"
-            ],
+                : labels,
+            labels: labels,
             onSelected: (List<String> checked) {
               setState(() {
                 _selectedList = checked;
@@ -429,7 +398,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                       new MaterialPageRoute(
                           builder: (context) => new OtherDetails(map)));
                 }else{
-                    showAlertDialog();
+                    showAlertDialog("Input Error","Please enter valid terms");
                 }
               },
               child: new Text(
@@ -441,14 +410,14 @@ class _PersonalDetailsState extends State<PersonalDetails> {
     );
   }
 
-  showAlertDialog(){
+  showAlertDialog(title,content){
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("You must fill all the fields"),
-          content: Text("Click on 'OK' to continue"),
+          title: Text(title),
+          content: Text(content),
           actions: <Widget>[
             FlatButton(
               child: Text('Ok'),
@@ -477,5 +446,39 @@ class _PersonalDetailsState extends State<PersonalDetails> {
     map["disability"]=_disability;
     map["disabilityTypes"]=_selectedList;
     return map;
+  }
+
+  getType(String inputType) {
+    if(inputType=="text"){
+      return TextInputType.text;
+    }else if(inputType=="email"){
+      return TextInputType.emailAddress;
+    }else if(inputType=="phone"){
+      return TextInputType.phone;
+    }
+  }
+
+  Widget getEmailField(TextEditingController emailController, int i, String s, String t) {
+     return TextFormField(
+       decoration: InputDecoration(
+         labelText: "Email",
+         border: OutlineInputBorder(),
+       ),
+      keyboardType: TextInputType.emailAddress,
+      validator: validateEmail,
+       onSaved: (String val) {
+         emailController.text = val;
+       },
+    );
+  }
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
   }
 }
