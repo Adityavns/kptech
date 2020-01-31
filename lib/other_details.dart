@@ -55,17 +55,20 @@ class _OtherDetailsState extends State<OtherDetails> {
     ]);
   }
 
-  Widget getTextField(TextEditingController controller, String hintText) {
+  Widget getTextField(TextEditingController controller, String hintText,/*Function validate*/) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        /*validator: (val)=>validate(val),*/
         controller: controller,
         decoration: InputDecoration(
+          border: OutlineInputBorder(),
           hintText: hintText,
         ),
       ),
     );
   }
+
 
   Widget getButton() {
     return RaisedButton(
