@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kptech/communication_details.dart';
 
 class OtherDetails extends StatefulWidget {
   @override
@@ -50,6 +51,7 @@ class _OtherDetailsState extends State<OtherDetails> {
       getTextField(permanentAddressTehsil, "Permanent Address Tehsil"),
       getTextField(
           permanentAddressConstituency, "permanent Address Constituency"),
+      getButton(),
     ]);
   }
 
@@ -62,6 +64,17 @@ class _OtherDetailsState extends State<OtherDetails> {
           hintText: hintText,
         ),
       ),
+    );
+  }
+
+  Widget getButton() {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => new CommunicationDetails()));
+      },
     );
   }
 }
