@@ -206,5 +206,6 @@ class _OtherDetailsState extends State<OtherDetails> {
     map["permanentAddressConstituency"] = permanentAddressConstituency.text;
     print(map);
     return map;
+
   }
 }
