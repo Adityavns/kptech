@@ -1,17 +1,17 @@
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
-class Widget1 extends StatefulWidget {
+class PersonalDetails extends StatefulWidget {
   @override
-  _Widget1State createState() => _Widget1State();
+  _PersonalDetailsState createState() => _PersonalDetailsState();
 }
 
-TextEditingController controller = new TextEditingController();
+class _PersonalDetailsState extends State<PersonalDetails> {
+  TextEditingController controller = new TextEditingController();
 
-class _Widget1State extends State<Widget1> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -128,10 +128,11 @@ class _Widget1State extends State<Widget1> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("Date of Birth :",style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16.0,
-            color: Colors.blueAccent)),
+        Text("Date of Birth :",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+                color: Colors.blueAccent)),
         DateTimeField(
           format: format,
           onShowPicker: (context, currentValue) {

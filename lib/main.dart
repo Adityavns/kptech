@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kptech/jashu.dart';
-import 'package:kptech/repository/DataSource.dart';
-import 'package:kptech/widget_base.dart';
 
-import 'Test/test.dart';
-import 'model/Entry.dart';
+import 'PersonalDetails.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,63 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Test(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(appBar: new AppBar(), body: getBody());
-  }
-
-  Widget getBody() {
-    return ListView(
-      children: <Widget>[
-        new FlatButton(
-            onPressed: () {
-              DataSource.getDataSource().sendDataToServer(new Entry());
-            },
-            child: new Text("Press me to send dummy data")),
-        widget1(),
-        widget2(),
-        Widget3(),
-      ],
-    );
-  }
-
-  Widget widget1() {
-    return WidgetBase(new Text("Pranay"));
-  }
-
-  Widget widget2() {
-    return Column(
-      children: <Widget>[],
-    );
-  }
-
-  Widget widget3() {
-    return new Text("Jashu");
-  }
-
-  Widget getTextField(
-      TextEditingController controller, int maxLength, String hintText) {
-    return TextFormField(
-      controller: controller,
-      maxLength: maxLength,
-      decoration: InputDecoration(
-        hintText: hintText,
-      ),
+      home: PersonalDetails(),
     );
   }
 }

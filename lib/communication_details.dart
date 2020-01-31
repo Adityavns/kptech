@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:kptech/Bloc.dart';
 import 'package:kptech/widget_base.dart';
 
-class Widget3 extends StatefulWidget {
+class CommunicationDetails extends StatefulWidget {
   @override
-  _Widget3State createState() => _Widget3State();
+  _CommunicationDetailsState createState() => _CommunicationDetailsState();
 }
 
-class _Widget3State extends State<Widget3> {
+class _CommunicationDetailsState extends State<CommunicationDetails> {
   Bloc _bloc = Bloc.getInstance();
+
   String _picked = "Yes";
 
   @override
@@ -125,10 +125,9 @@ class _Widget3State extends State<Widget3> {
         Text("Training Status"),
         RadioButtonGroup(
           labels: <String>["Fresher", "Experienced"],
-          onSelected: (String selected) =>
-              setState(() {
-                _picked = selected;
-              }),
+          onSelected: (String selected) => setState(() {
+            _picked = selected;
+          }),
           picked: _picked,
         ),
       ],
@@ -159,10 +158,9 @@ class _Widget3State extends State<Widget3> {
         Text("Communication Address Is Same as Permanant Address"),
         RadioButtonGroup(
           labels: <String>["Yes", "No"],
-          onSelected: (String selected) =>
-              setState(() {
-                _picked = selected;
-              }),
+          onSelected: (String selected) => setState(() {
+            _picked = selected;
+          }),
           picked: _picked,
         ),
       ],
