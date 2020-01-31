@@ -64,7 +64,93 @@ class Entry {
       return false;
     else if (date == null || date.length == 0)
       return false;
-    else if (email == null || email.length == 0) return false;
+    else if (email == null || email.length == 0)
+      return false;
+    else if (maritalStatus == null || maritalStatus.length == 0)
+      return false;
+    else if (fathersName == null || fathersName.length == 0)
+      return false;
+    else if (mothersName == null || mothersName.length == 0)
+      return false;
+    else if (guardiansName == null || guardiansName.length == 0)
+      return false;
+    else if (religion == null || religion.length == 0)
+      return false;
+    else if (category == null || category.length == 0)
+      return false;
+    else if (disability == null)
+      return false;
+    else if (typeOfDisability == null || typeOfDisability.length == 0)
+      return false;
+    else if (domicileState == null || domicileState.length == 0)
+      return false;
+    else if (domicileDistrict == null || domicileDistrict.length == 0)
+      return false;
+    else if (idName == null || idName.length == 0)
+      return false;
+    else if (idNo == null || idNo == 0)
+      return false;
+    else if (countryCode == null || countryCode.toString() != "+91")
+      return false;
+    else if (mobileNo == null || mobileNo
+        .toString()
+        .length < 10)
+      return false;
+    else if (educationalQualification == null ||
+        educationalQualification.length == 0)
+      return false;
+    else if (permanentAddress == null || permanentAddress.length == 0)
+      return false;
+    else if (permanentAddressState == null || permanentAddressState.length == 0)
+      return false;
+    else if (permanentAddressDistrict == null ||
+        permanentAddressDistrict.length == 0)
+      return false;
+    else if (permanentAddressPinCode == null ||
+        permanentAddressPinCode
+            .toString()
+            .length < 6)
+      return false;
+    else if (permanentAddressCity == null || permanentAddressCity.length == 0)
+      return false;
+    else if (permanentAddressTehsil == null ||
+        permanentAddressTehsil.length == 0)
+      return false;
+    else if (permanentAddressConstituency == null ||
+        permanentAddressConstituency.length == 0)
+      return false;
+    else if (communicationAddressState == null ||
+        communicationAddressState.length == 0)
+      return false;
+    else if (communicationAddressDistrict == null ||
+        communicationAddressDistrict.length == 0)
+      return false;
+    else if (communicationAddressPinCode == null ||
+        communicationAddressPinCode.length == 0)
+      return false;
+    else if (communicationAddressCity == null ||
+        communicationAddressCity.length == 0)
+      return false;
+    else if (communicationAddressTehsil == null ||
+        communicationAddressTehsil.length == 0)
+      return false;
+    else if (communicationAddressPermanentConstituency == null ||
+        communicationAddressPermanentConstituency.length == 0)
+      return false;
+    else if (trainingStatus == null || trainingStatus.length == 0)
+      return false;
+    else if (previousExperienceSector == null ||
+        previousExperienceSector.length == 0)
+      return false;
+    else if (noOfMonthsOfExperience == null ||
+        noOfMonthsOfExperience < 1 ||
+        noOfMonthsOfExperience > 500)
+      return false;
+    else if (employmentStatus == null || employmentStatus.length == 0)
+      return false;
+    else if (employmentDetails == null || employmentDetails.length == 0)
+      return false;
+    else if (heardAboutUs == null || heardAboutUs.length == 0) return false;
     return true;
   }
 
@@ -75,4 +161,14 @@ class Entry {
       return true;
   }
 
+  bool validateBooleans(bool booleans) {
+    return booleans != null ? true : false;
+  }
+
+  bool validateInt(int integer, int valueToCompareWith) {
+    if (integer != null || integer < valueToCompareWith)
+      return false;
+    else
+      return true;
+  }
 }
