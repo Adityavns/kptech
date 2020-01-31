@@ -28,7 +28,7 @@ class _OtherDetailsState extends State<OtherDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(appBar: new AppBar(), body: getBody());
+    return new Scaffold(appBar: new AppBar(title: Text("KP Tech"),), body: getBody());
   }
 
   Widget getBody() {

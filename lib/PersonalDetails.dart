@@ -23,7 +23,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   String _disability = "No";
   String _religion="Hindu";
   String _category="General";
-  List<String> _selectedList=["Locomotor Disability"];
+  String _email;
+  List<String> _selectedList;
   List<String> labels = [
     "Locomotor Disability",
     "Leprosy Cured Person",
@@ -223,7 +224,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getEmailId() {
-    return getEmailField(emailController, 50, "Enter Email*","email");
+    return getEmailField();
   }
 
   Widget getMaritalStatus() {
@@ -458,16 +459,18 @@ class _PersonalDetailsState extends State<PersonalDetails> {
     }
   }
 
-  Widget getEmailField(TextEditingController emailController, int i, String s, String t) {
+  Widget getEmailField() {
      return TextFormField(
+       controller: emailController,
        decoration: InputDecoration(
          labelText: "Email",
+         hintMaxLines: 50,
          border: OutlineInputBorder(),
        ),
       keyboardType: TextInputType.emailAddress,
       validator: validateEmail,
        onSaved: (String val) {
-         emailController.text = val;
+         _email = val;
        },
     );
   }

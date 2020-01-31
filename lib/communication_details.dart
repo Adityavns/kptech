@@ -42,7 +42,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("KP Tech")),
       body: Form(
         key: _formKey3,
         child: SingleChildScrollView(
