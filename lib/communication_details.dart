@@ -96,6 +96,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
 
   Widget getCommunicationAddressTextField() {
     return TextFormField(
+      maxLength: 50,
       controller: communicationAddressController,
       validator: (s) {
         return s == null || s.length == 0 ? "Enter Valid Details" : null;
@@ -130,6 +131,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget getCommunicationAddressPINCode() {
     return TextFormField(
       controller: pinCodeController,
+      maxLength: 6,
       validator: (s) =>
       s.isEmpty && s.length < 6 ? "Enter Valid Details" : null,
       keyboardType: TextInputType.numberWithOptions(),
@@ -206,6 +208,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
 
   Widget getNoOfMonthsOfPreviousExperiences() {
     return TextFormField(
+      keyboardType: TextInputType.numberWithOptions(),
       enabled: _trainingStatus == "Fresher" ? false : true,
       validator: (s) {
         return _trainingStatus == "Fresher"
@@ -229,6 +232,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
 
   Widget getEmploymentDetails() {
     return TextFormField(
+      maxLength: 100,
       controller: employmentDetailsController,
       validator: (s) {
         return _trainingStatus == "Experience"

@@ -14,7 +14,7 @@ class _OtherDetailsState extends State<OtherDetails> {
   final domicileState = TextEditingController();
   final domicileDistrict = TextEditingController();
   final adharNo = TextEditingController();
-  final countryCode = TextEditingController();
+  final countryCode = TextEditingController(text: "+91");
   final mobileNo = TextEditingController();
   final educationLevel = TextEditingController();
   final permanentAddress = TextEditingController();
@@ -70,6 +70,8 @@ class _OtherDetailsState extends State<OtherDetails> {
           child: TextFormField(
             validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: adharNo,
+            maxLength: 12,
+            keyboardType: TextInputType.numberWithOptions(),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Adhar No",
@@ -79,7 +81,7 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
-            validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
+            enabled: false,
             controller: countryCode,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -92,6 +94,8 @@ class _OtherDetailsState extends State<OtherDetails> {
           child: TextFormField(
             validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: mobileNo,
+            maxLength: 10,
+            keyboardType: TextInputType.numberWithOptions(),
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Mobile Number",
@@ -112,6 +116,7 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
+            maxLength: 50,
             validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: permanentAddress,
             decoration: InputDecoration(
@@ -145,6 +150,8 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
+            keyboardType: TextInputType.numberWithOptions(),
+            maxLength: 6,
             validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: permanentAddressPinCode,
             decoration: InputDecoration(

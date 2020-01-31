@@ -282,6 +282,5 @@ class Bloc {
     _entryToBeSent.heardAboutUs = value;
   }
 
-  void sendMapToServer(Map map) {
-  }
+  void sendMapToServer(Map map) {}
 }
