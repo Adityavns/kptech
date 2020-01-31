@@ -3,6 +3,9 @@ import 'package:kptech/communication_details.dart';
 
 class OtherDetails extends StatefulWidget {
   @override
+  OtherDetails(Map map){
+    print(map);
+  }
   _OtherDetailsState createState() => _OtherDetailsState();
 }
 
