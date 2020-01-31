@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:intl/intl.dart';
+import 'package:kptech/other_details.dart';
 
 class PersonalDetails extends StatefulWidget {
   @override
@@ -14,61 +15,70 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getSalutation(),
+    return Scaffold(
+      appBar: new AppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getSalutation(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getName(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getGender(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getDateOfBirth(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getEmailId(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getMaritalStatus(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getFathersName(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getMothersName(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getGuardiansName(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getReligion(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getCategory(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getDisability(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getTypeOfDisability(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: getNextButton(),
+            )
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getName(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getGender(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getDateOfBirth(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getEmailId(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getMaritalStatus(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getFathersName(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getMothersName(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getGuardiansName(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getReligion(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getCategory(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getDisability(),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: getTypeOfDisability(),
-        )
-      ],
+      ),
     );
   }
 
@@ -292,5 +302,14 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             onSelected: (List<String> checked) => print(checked.toString())),
       ],
     );
+  }
+
+  Widget getNextButton() {
+    return new FlatButton(
+        onPressed: () {
+          Navigator.push(context,
+              new MaterialPageRoute(builder: (context) => new OtherDetails()));
+        },
+        child: new Text("Next"));
   }
 }
