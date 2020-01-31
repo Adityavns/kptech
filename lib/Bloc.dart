@@ -281,4 +281,7 @@ class Bloc {
   set heardAboutUs(String value) {
     _entryToBeSent.heardAboutUs = value;
   }
+
+  void sendMapToServer(Map map) {
+  }
 }
