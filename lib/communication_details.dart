@@ -15,28 +15,34 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        Text(
-          "Communication Details",
-          style: TextStyle(fontWeight: FontWeight.bold),
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: new Column(
+          children: <Widget>[
+            Text(
+              "Communication Details",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            WidgetBase(getCommunicationSameAsPermanentAddress()),
+            WidgetBase(getCommunicationAddressState()),
+            WidgetBase(getCommunicationAddressDistrict()),
+            WidgetBase(getCommunicationAddressPINCode()),
+            WidgetBase(getCommunicationAddressCity()),
+            WidgetBase(getCommunicationAddressTehsil()),
+            WidgetBase(getCommunicationAddressPermanentConstituency()),
+            WidgetBase(getTrainingStatus()),
+            WidgetBase(getPreviousExperienceSector()),
+            WidgetBase(getNoOfMonthsOfPreviousExperiences()),
+            WidgetBase(getEmployed()),
+            WidgetBase(getEmploymentStatus()),
+            WidgetBase(getEmploymentDetails()),
+            WidgetBase(getHeardAboutUs()),
+            WidgetBase(getCandidateID()),
+            WidgetBase(getSubmitButton()),
+          ],
         ),
-        WidgetBase(getCommunicationSameAsPermanentAddress()),
-        WidgetBase(getCommunicationAddressState()),
-        WidgetBase(getCommunicationAddressDistrict()),
-        WidgetBase(getCommunicationAddressPINCode()),
-        WidgetBase(getCommunicationAddressCity()),
-        WidgetBase(getCommunicationAddressTehsil()),
-        WidgetBase(getCommunicationAddressPermanentConstituency()),
-        WidgetBase(getTrainingStatus()),
-        WidgetBase(getPreviousExperienceSector()),
-        WidgetBase(getNoOfMonthsOfPreviousExperiences()),
-        WidgetBase(getEmployed()),
-        WidgetBase(getEmploymentStatus()),
-        WidgetBase(getEmploymentDetails()),
-        WidgetBase(getHeardAboutUs()),
-        WidgetBase(getCandidateID()),
-      ],
+      ),
     );
   }
 
@@ -208,6 +214,13 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
         border: OutlineInputBorder(),
         hintText: "Enter Experience between 1-500 months",
       ),
+    );
+  }
+
+  Widget getSubmitButton() {
+    return new RaisedButton(
+      onPressed: () {},
+      child: Text("Submit"),
     );
   }
 }
