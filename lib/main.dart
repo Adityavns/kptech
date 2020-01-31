@@ -3,6 +3,7 @@ import 'package:kptech/jashu.dart';
 import 'package:kptech/repository/DataSource.dart';
 import 'package:kptech/widget_base.dart';
 
+import 'Test/test.dart';
 import 'model/Entry.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Test(),
     );
   }
 }
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget widget3() {
-    return Text("Jashu");
+    return new Text("Jashu");
   }
 
   Widget getTextField(
