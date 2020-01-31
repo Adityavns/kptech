@@ -8,6 +8,8 @@ class Bloc {
     _entryToBeSent = new Entry();
   }
 
+  void submit() {}
+
   static Bloc getInstance() {
     if (_instance == null) _instance = new Bloc.internal();
     return _instance;
