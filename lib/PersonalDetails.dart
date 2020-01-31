@@ -21,8 +21,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   String _gender = "Male";
   String _martialStatus = "Single";
   String _disability = "No";
-  String _religion;
-  String _category;
+  String _religion="Hindu";
+  String _category="General";
   List<String> _selectedList;
 
   final _formKey = GlobalKey<FormState>();
@@ -272,6 +272,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "Not to be Disclosed"
             ],
             picked: _religion,
+            onChange: (String label, int index) =>
+                print("label: $label index: $index"),
             onSelected: (String selected) {
               setState(() {
                 _religion = selected;
@@ -301,6 +303,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               "Not to be disclosed"
             ],
             picked: _category,
+            onChange: (String label, int index) =>
+                print("label: $label index: $index"),
             onSelected: (String selected) {
               setState(() {
                 _category = selected;
