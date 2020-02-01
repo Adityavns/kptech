@@ -50,6 +50,12 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   final _formKey = GlobalKey<FormState>();
 
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,7 +207,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
 
   Widget getDateOfBirth() {
-    final format = DateFormat("yyyy-MM-dd");
+    //final format = DateFormat("yyyy-MM-dd");
+    final format = DateFormat("dd-MM-yyyy");
     return DateTimeField(
       controller: dobController,
         validator: (value) {

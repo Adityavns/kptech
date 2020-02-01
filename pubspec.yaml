@@ -29,6 +29,7 @@ dependencies:
   json_annotation: ^3.0.0
   grouped_buttons: 1.0.4
   datetime_picker_formfield: ^1.0.0
+  loading: ^1.0.2
 
 
 dev_dependencies:

@@ -26,6 +26,7 @@ class _OtherDetailsState extends State<OtherDetails> {
   final permanentAddressConstituency = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(appBar: new AppBar(title: Text("KP Tech"),), body: getBody());
@@ -128,7 +129,7 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
-            validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
+           validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: permanentAddressState,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -163,7 +164,7 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
-            validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
+            //validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: permanentAddressCity,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -174,7 +175,7 @@ class _OtherDetailsState extends State<OtherDetails> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
-            validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
+            //validator: (val) => val.isEmpty ? "Field cannot be empty" : null,
             controller: permanentAddressTehsil,
             decoration: InputDecoration(
               border: OutlineInputBorder(),

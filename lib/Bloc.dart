@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:kptech/model/Entry.dart';
 
 class Bloc {
   static Bloc _instance;
   Entry _entryToBeSent;
+  bool dataSent=false;
 
   Bloc.internal() {
     _entryToBeSent = new Entry();
@@ -282,5 +286,22 @@ class Bloc {
     _entryToBeSent.heardAboutUs = value;
   }
 
-  void sendMapToServer(Map map) {}
+  Future sendMapToServer(Map map) async{
+    print(map);
+    //map.forEach((k,v) => print('$k: $v'));
+    print(map["employmentStatus"]);
+    print(map["employmentDetails"] );
+    print(map["heardAboutUs"]);
+    CloudFunctions cloudFunctions = CloudFunctions.instance;
+    await cloudFunctions.getHttpsCallable(functionName: "saveAnEntry").call(map).then(onValue).catchError(onError);
+  }
+
+  FutureOr onValue(HttpsCallableResult value) {
+    dataSent=true;
+    print(value);
+  }
+
+  onError(error) {
+    print(error);
+  }
 }

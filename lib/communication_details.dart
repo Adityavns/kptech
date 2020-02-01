@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:kptech/Bloc.dart';
+import 'package:kptech/Submit.dart';
 import 'package:kptech/widget_base.dart';
 
 class CommunicationDetails extends StatefulWidget {
@@ -29,16 +30,16 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   new TextEditingController();
   TextEditingController employmentDetailsController =
   new TextEditingController();
-  TextEditingController heardAboutUsController = new TextEditingController();
+ // TextEditingController heardAboutUsController = new TextEditingController();
   TextEditingController communicationAddressController =
   new TextEditingController();
   TextEditingController candidateIDController = new TextEditingController();
 
   String _picked = "No";
-  String _trainingStatus = "Experience";
+  String _trainingStatus = "Experienced";
   String heardAboutUsValue = 'Select';
   String _employmentStatus = "Select Employment Status";
-
+  String _sectorList = "Select Employment Status";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,9 +146,9 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget getCommunicationAddressCity() {
     return TextFormField(
         controller: cityController,
-        validator: (s) {
-          return s == null || s.length == 0 ? "Enter Valid Details" : null;
-        },
+//        validator: (s) {
+//          return s == null || s.length == 0 ? "Enter Valid Details" : null;
+//        },
         decoration:
         InputDecoration(border: OutlineInputBorder(), labelText: "City"));
   }
@@ -155,7 +156,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget getCommunicationAddressTehsil() {
     return TextFormField(
       controller: tehsilController,
-      validator: (s) => s.isEmpty ? "Enter Valid Details" : null,
+      //validator: (s) => s.isEmpty ? "Enter Valid Details" : null,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: "Tehsil",
@@ -184,6 +185,12 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
           labels: <String>["Fresher", "Experienced"],
           onSelected: (String selected) => setState(() {
             _trainingStatus = selected;
+            if(_trainingStatus=="Experience"){}
+            else if(_trainingStatus=="Fresher"){
+              _employmentStatus = "Select Employment Status";
+              experienceListController.clear();
+              experienceController.clear();
+            }
           }),
           picked: _trainingStatus,
         ),
@@ -194,6 +201,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget getPreviousExperienceSector() {
     return TextFormField(
       enabled: _trainingStatus == "Fresher" ? false : true,
+      controller: experienceListController,
       validator: (s) {
         return _trainingStatus == "Fresher"
             ? null
@@ -201,7 +209,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
       },
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        labelText: "Previous Experience List",
+        labelText: "Previous Experience Sector ",
       ),
     );
   }
@@ -209,6 +217,8 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget getNoOfMonthsOfPreviousExperiences() {
     return TextFormField(
       keyboardType: TextInputType.numberWithOptions(),
+      maxLength: 3,
+      controller: experienceController,
       enabled: _trainingStatus == "Fresher" ? false : true,
       validator: (s) {
         return _trainingStatus == "Fresher"
@@ -217,7 +227,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
       },
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        labelText: "Enter Experience ",
+        labelText: "Enter Experience(in Months) ",
       ),
     );
   }
@@ -278,6 +288,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
         validator: (s) => s == "Select" ? "This Field is Required" : null,
         isExpanded: true,
         decoration: InputDecoration(
+          labelText: "Heard About Us",
           border: OutlineInputBorder(),
         ),
         value: heardAboutUsValue,
@@ -306,35 +317,43 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
 
   Widget dropDownForEmploymentStatus() {
     return Expanded(
-      child: DropdownButtonFormField(
-        validator: (s) =>
-        s == "Select Employment Status"
-            ? "Select Your Employment Status "
-            : null,
-        hint: Text("Enter Employment Status"),
-        isExpanded: true,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
+      child: AbsorbPointer(
+        absorbing: _trainingStatus == "Fresher" ? true: false,
+        child: DropdownButtonFormField(
+          validator: (s){
+            if(_trainingStatus=="Experienced"){
+              return s == "Select Employment Status"
+                  ? "Select Your Employment Status "
+                  : null;
+            }
+            return null;
+          },
+          hint: Text("Enter Employment Status"),
+          isExpanded: true,
+          decoration: InputDecoration(
+            labelText: "Employment Status",
+            border: OutlineInputBorder(),
+          ),
+          value: _employmentStatus,
+          items: [
+            'Select Employment Status',
+            'Employed through Partner',
+            'Employed through Employer',
+            'Upskilled',
+            'Opted for Higher Studies',
+            'Self-Employed'
+          ].map<DropdownMenuItem>((String value) {
+            return DropdownMenuItem<String>(
+              child: Text(value),
+              value: value,
+            );
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              _employmentStatus = newValue;
+            });
+          },
         ),
-        value: _employmentStatus,
-        items: [
-          'Select Employment Status',
-          'Employed through Partner',
-          'Employed through Employer',
-          'Upskilled',
-          'Opted for Higher Studies',
-          'Self-Employed'
-        ].map<DropdownMenuItem>((String value) {
-          return DropdownMenuItem<String>(
-            child: Text(value),
-            value: value,
-          );
-        }).toList(),
-        onChanged: (newValue) {
-          setState(() {
-            _employmentStatus = newValue;
-          });
-        },
       ),
     );
   }
@@ -342,10 +361,14 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
   Widget dropDownForStates() {
     return Expanded(
       child: DropdownButtonFormField(
-        validator: (s) =>
-        s == "Select Employment Status"
-            ? "Select Your Employment Status "
-            : null,
+        validator: (s){
+          if(_trainingStatus=="Experienced"){
+            return s == "Select Employment Status"
+              ? "Select Your Employment Status "
+              : null;
+          }
+          return null;
+        },
         hint: Text("Enter Employment Status"),
         isExpanded: true,
         decoration: InputDecoration(
@@ -381,7 +404,7 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
       communicationAddressController.text = map['permanentAddress'];
       stateController.text = map['permanentAddressState'];
       districtController.text = map["permanentAddressDistrict"];
-      pinCodeController.text = map["permanentAddressDistrict"];
+      pinCodeController.text = map["permanentAddressPinCode"];
       cityController.text = map["permanentAddressCity"];
       tehsilController.text = map["permanentAddressTehsil"];
       constituencyController.text = map["permanentAddressConstituency"];
@@ -393,6 +416,10 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
     if (form.validate()) {
       Map map = getMapObjects(widget.map);
       _bloc.sendMapToServer(map);
+      Navigator.push(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => new Submit(map)));
     }
   }
 
@@ -427,5 +454,4 @@ class _CommunicationDetailsState extends State<CommunicationDetails> {
     constituencyController.clear();
   }
 }
-
 enum boolType { yes, no }
